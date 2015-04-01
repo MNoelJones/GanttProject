@@ -1,0 +1,130 @@
+<gantt>
+   <days>
+      <day id="1" weekday="mon">
+         <start>08:30</start>
+         <breaks>
+            <break id="1">
+               <start>12:30</start>
+               <end>13:00</end>
+            </break>
+         </breaks>
+         <end>17:00</end>
+      </day>
+      <day id="2" weekday="tue" dup="1"/>
+      <day id="3" weekday="wed" dup="1"/>
+      <day id="4" weekday="thu" dup="1"/>
+      <day id="5" weekday="fri">
+         <start>08:30</start>
+         <end>14:00</end>
+      </day>
+   </days>
+
+   <project id="0" name="Program development">
+      <resources>
+         <resource id="1">
+            <name>MNJ</name>
+            <type>human</type>
+         </resource>
+         <resource id="2">
+            <name>Rack 1</name>
+            <type>equipment</type>
+         </resource>
+         <resource id="3">
+            <name>PC</name>
+            <type>equipment</type>
+         </resource>
+      </resources>
+
+      <tasks>
+         <task id="1">
+            <description>Test 1</description>
+            <start>2012-01-16 16:00:00</start>
+         </task>
+         <!--
+         <task id="2">
+            <description>Test 2</description>
+            <start>2012-01-16 16:00:00</start>
+            <subtasks>
+               <task id="21">
+                  <name>Test setup</name>
+                  <duration>0:30</duration>
+                  <resource ref="1"/>
+                  <depend>13</depend>
+               </task>
+               <task id="22">
+                  <name>Runtime</name>
+                  <duration>1:00</duration>
+                  <resource ref="2"/>
+                  <depend>21</depend>
+               </task>
+               <task id="23">
+                  <name>Cooldown</name>
+                  <duration>0:30</duration>
+                  <resource ref="2"/>
+                  <depend>22</depend>
+               </task>
+               <task id="24">
+                  <name>Results collection</name>
+                  <duration>0:20</duration>
+                  <resource ref="1"/>
+                  <depend>23</depend>
+               </task>
+               <task id="25">
+                  <name>Results assessment</name>
+                  <duration>2:00</duration>
+                  <resource ref="1"/>
+                  <depend>24</depend>
+               </task>
+            </subtasks>
+            <depend>1</depend>
+         </task>
+         -->
+
+         <task id="1">
+            <subtasks>
+               <task id="11">
+                  <name>Test setup</name>
+                  <duration>0:30</duration>
+                  <resource ref="1"/>
+               </task>
+               <task id="12">
+                  <name>Runtime</name>
+                  <duration>1:00</duration>
+                  <resource ref="2"/>
+                  <depend>11</depend>
+               </task>
+               <!--
+               <task id="13">
+                  <name>Cooldown</name>
+                  <duration>0:30</duration>
+                  <resource ref="2"/>
+                  <depend>12</depend>
+               </task>
+               <task id="14">
+                  <name>Results collection</name>
+                  <duration>0:20</duration>
+                  <resource ref="1"/>
+                  <depend>13</depend>
+               </task>
+               <task id="15">
+                  <name>Results assessment</name>
+                  <duration>2:00</duration>
+                  <resource ref="1"/>
+                  <depend>14</depend>
+               </task>
+               -->
+            </subtasks>
+         </task>
+         
+         <task id="2" dup="1">
+            <description>Test 2</description>
+            <depend>1</depend>
+         </task>
+         <task id="3" dup="1">
+            <description>Test 3</description>
+            <depend>2</depend>
+         </task>
+
+      </tasks>
+   </project>
+</gantt>

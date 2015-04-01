@@ -1,0 +1,110 @@
+@startuml Gantt-Timeline.png
+
+namespace GanttTimeline {
+   class Presenter {
+      display()
+   }
+
+   class Timeline_P implements Presenter {
+      Timeline timeline
+      
+      void display_entry(TimelineEntry)
+   }
+
+   Timeline_P -> Timeline
+
+   class TimelineEntry {
+      -DateTime start
+      -DateTime end
+      -list<TimelineEntry> predecessors
+      -list<TimelineEntry> successors
+      -TaskItem task_item
+      
+      +DateTime earliestStart(TimelineEntry& b)
+      +DateTime earliestEnd(TimelineEntry& b)
+      +DateTime latestStart(TimelineEntry& b)
+      +DateTime latestEnd(TimelineEntry& b)
+
+      +Bool isStartLaterThanStart(TimelineEntry& b)
+      +Bool isStartLaterThanEnd(TimelineEntry& b)
+      +Bool isEndLaterThanStart(TimelineEntry& b)
+      +Bool isEndLaterThanEnd(TimelineEntry& b)
+
+      +Bool isStartEarlierThanStart(TimelineEntry& b)
+      +Bool isStartEarlierThanEnd(TimelineEntry& b)
+      +Bool isEndEarlierThanStart(TimelineEntry& b)
+      +Bool isEndEarlierThanEnd(TimelineEntry& b)
+      
+      +Bool isStartEqualStart(TimelineEntry& b)
+      +Bool isStartEqualEnd(TimelineEntry& b)
+      +Bool isEndEqualStart(TimelineEntry& b)
+      +Bool isEndEqualEnd(TimelineEntry& b)
+      
+      +Bool hasOverlap(TimelineEntry& b)
+      +TimelineEntry& Overlap(TimelineEntry& b)
+      
+      +setTaskItem(TaskItem& ti)
+      +DateTime getStart()
+      -void setStart(DateTime dt)
+      +DateTime getEnd()
+      -void setEnd(DateTime dt)
+   }
+
+   class TaskItem {
+      -DateTime start
+      -DateTime end
+      -DateTime::Duration duration
+      -list<Dependency> dependencies
+      
+      +void addDependency(Dependency d)
+      +void addDependency(TaskItem& item, DependencyType type)
+      +void delDependency(Dependency d)
+      +void setStart(DateTime start)
+      +void setEnd(DateTime end)
+
+      -void calculateEnd()
+      -void calculateStart()
+      -void calculateDuration()
+
+      +DateTime getStart()
+      +DateTime getEnd()
+   }
+
+   class Dependency {
+      -TaskItem& task_item
+      -DependencyType type
+      
+      +void setTaskItem(TaskItem& ti)
+      +void setDependencyType(DependencyType type)
+      +TaskItem getTaskItem()
+      +DependencyType getDependencyType()
+   }
+
+
+   ' NB: Timeline::addTask also adds the wrapping TimelineEntry and puts it in the entries list 
+   class Timeline {
+      -list<TimelineEntry> entries
+
+      +TaskItem addTask(DateTime start, DateTime end)
+      +TaskItem getTask(index i)
+      +Int getTaskCount()
+      
+      +void sequenceTasks()
+   }
+
+   class DependencyType {
+      -enum eDependencyType { endtostart, starttostart, starttoend, endtoend }
+      -eDependencyType type
+
+      +eDependencyType getType()
+      +void setType(eDependencyType type)
+   }
+
+   Timeline "1" *-- "*" TimelineEntry
+   TimelineEntry -- TaskItem
+   TaskItem "1" *-- "*" Dependency
+   Dependency "1" *-- DependencyType
+   Dependency "1" -- "1" TaskItem
+}
+
+@enduml

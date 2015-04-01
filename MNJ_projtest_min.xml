@@ -1,0 +1,47 @@
+<gantt>
+   <project id="0" name="Program development">
+      <resources>
+         <resource id="1">
+            <name>MNJ</name>
+            <type>human</type>
+         </resource>
+         <resource id="2">
+            <name>Rack 1</name>
+            <type>equipment</type>
+         </resource>
+         <resource id="3">
+            <name>PC</name>
+            <type>equipment</type>
+         </resource>
+      </resources>
+
+      <tasks>
+         <task id="1">
+            <description>Test 1</description>
+            <start>2012-01-16 16:00:00</start>
+            <subtasks>
+               <task id="11">
+                  <name>Test setup</name>
+                  <duration>0:30</duration>
+                  <resource ref="1"/>
+               </task>
+               <task id="12">
+                  <name>Runtime</name>
+                  <duration>1:00</duration>
+                  <resource ref="2"/>
+                  <depend>11</depend>
+               </task>
+            </subtasks>
+         </task>
+         <task id="12">
+            <subtasks>
+               <task id="121">
+                  <name>Runtime_subtask</name>
+                  <duration>0:30</duration>
+                  <resource ref="2"/>
+               </task>
+            </subtasks>
+         </task>
+      </tasks>
+   </project>
+</gantt>

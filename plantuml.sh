@@ -1,0 +1,1 @@
+java -jar "`cygpath -aw '/cygdrive/c/Program Files/PlantUML/plantuml.jar'`" -graphvizdot "`cygpath -aw "$(which dot.exe)"`" $*

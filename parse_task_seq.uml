@@ -1,0 +1,84 @@
+@startuml task_class.png
+class task {
+   description
+   start
+   duration
+   resource
+   subtasks
+   depends_on
+   dependents
+   weight
+   dupe
+   graph
+   twig
+   
+   void twig_first_child()
+   void twig_is_dupe()
+   
+   Str construct_id(id_prefix, id_suffix)
+   void update_dependents(id, dependent_id)
+   void create(id)
+   void twig_purge()
+}
+
+task -d-> Graph
+task -d-> "XML::Twig"
+@enduml
+
+@startuml parse_task.png
+
+parse_task -> "XML::Twig" : get_id()
+return $id
+parse_task -> Graph : has_vertex($id)
+alt false
+   parse_task -> Graph : add_vertex($id)
+end
+parse_task -> "XML::Twig" : att(dup)
+return $dup
+
+loop $item = description, start, duration, resource
+   alt defined($dup)
+      parse_task -> Graph : get_vertex_attribute($dup, $item)
+      alt defined 
+         parse_task -> parse_task : set $h->{$item}
+      end
+   end
+   parse_task -> "XML::Twig" : first_child($item)
+   alt defined
+      parse_task -> "XML::Twig" : first_child($item)->text
+      return $text
+      parse_task -> parse_task : set $h->{$item}
+      parse_task -> Graph : set_vertex_attribute($id, $item, $h->{$item})
+   end
+end
+
+alt defined($dup)
+   parse_task -> Graph : get_vertex_attribute($dup, "subtasks")
+   return $subtasklist
+   alt defined
+      parse_task -> Graph : get_vertex_attribute($id, "subtasks")
+      return $subtasks
+      loop $subtask = $subtasks
+         parse_task -> parse_task : construct_id($id, $subtask)
+         return $newsubtaskid
+         parse_task -> Graph : add_vertex($newsubtaskid)
+         parse_task -> parse_task : duplicate_attributes($newsubtaskid, $subtask)
+         parse_task -> Graph : get_vertex_attribute($subtask, "depends_on")
+         return $olddependents
+         loop $olddep = $olddependents
+            parse_task -> parse_task : construct_depend_id($id, $dup, $olddep)
+            return $newdependid
+            parse_task -> parse_task : update_dependents($newdependid, $newsubtaskid)
+            parse_task -> Graph : get_vertex_weight($dup)
+            return $weight
+            parse_task -> Graph : set_vertex_weight($newsubtaskid, $weight)
+            parse_task -> parse_task : push(@$subtasks, $newsubtaskid)
+         end
+      end
+      parse_task -> Graph : set_vertex_attribute($id, "subtasks", $subtasks)
+   end
+
+   parse_task -> "XML::Twig" : purge
+end
+
+@enduml 

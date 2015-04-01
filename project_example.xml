@@ -1,0 +1,31 @@
+<project name="Program development">
+<task name="Define Specifics" duration="5">
+</task>
+
+<task name="Analysis" duration="10">
+<dependency>Define Specifics</dependency>
+</task>
+
+<task name="Search documentation" duration="3">
+<dependency>Define Specifics</dependency>
+</task>
+
+<task name="Write code" duration="7">
+<dependency>Analysis</dependency>
+<dependency>Search documentation</dependency>
+</task>
+
+<task name="Write documentation" duration="5">
+<dependency>Write code</dependency>
+</task>
+
+<task name="Test" duration="5">
+<dependency>Write code</dependency>
+</task>
+
+<task name="Release" duration="2">
+<dependency>Test</dependency>
+<dependency>Write documentation</dependency>
+</task>
+
+</project>

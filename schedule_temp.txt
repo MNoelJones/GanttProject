@@ -1,0 +1,100 @@
+Initial test setup:	2:00
+
+Tests:
+1: 600bps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+2: 1kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+3: 1.2kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+4: 1.6kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+
+5: 1.8kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+6: 2kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+7: 2.1kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+8: 2.4kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+
+9: 2.8kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+10: 3.2kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+11: 3.6kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+12: 4kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+13: 3.2kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00
+	
+14: 3.6kbps
+	Test setup	0:30
+	Runtime	2:00
+	Cooldown	0:30
+	Results collection	0:20
+	Results assessment	2:00

@@ -1,0 +1,64 @@
+@startuml Gantt-Observer.png
+
+class Observer {
+   void receiveEvent()
+}
+
+class Subscription {
+   void addObserver(Observer o)
+   void delObserver(Observer o)
+   void notifyObservers()
+}
+
+class Task implements Observer {
+   DateTime start_time
+   DateTime end_time
+   DateTime::Duration duration
+   ArrayRef[task] dependents
+   ArrayRef[task] depends_on
+   
+   void calculateStart()
+   void calculateEnd()
+   void calculateDuration()
+   void addDependent(Task t)
+   void addDependsOn(Task t)
+   
+   void receiveEvent()
+
+   void notifyStartChange()
+   void notifyEndChange()
+   
+   void display()
+}
+
+class Task implements Subscription
+@enduml 
+
+@startuml Gantt-Observer-seq.png
+   [-> task1 : start_time(12:00)
+   [-> task1 : duration(0:30)
+   [-> task2 : addDependsOn(task1)
+   task2 -> task1 : end_time
+   return end_time1
+   task2 -> task2 : start_time(end_time1)
+   task2 -> task1 : addObserver(task2)
+   [-> task1 : addDependent(task2)
+   [-> task2 : duration(0:30)
+   task2 -> task2 : calculateEnd()
+ 
+   [-> task1 : display()
+   [-> task2 : display()
+   
+   [-> task1 : duration(0:45)
+   task1 -> task1 : calculateEnd()
+   task1 -> task1 : notifyEndChange()
+   task1 -> task1 : notifyObservers()
+   task1 -> task2 : receiveEvent()
+   task2 -> task1 : end_time
+   return end_time1
+   task2 -> task2 : start_time(end_time1)
+   task2 -> task2 : calculateEnd()
+
+   [-> task1 : display()
+   [-> task2 : display()
+@enduml

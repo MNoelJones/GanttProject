@@ -1,0 +1,9 @@
+@startuml Timeline_P..display_entry.png
+
+Timeline_P -> Timeline_M : getTaskCount
+loop 0..count
+Timeline_P -> Timeline_M : getTask(index)
+Timeline_P -> Timeline_P : display()
+end
+
+@enduml

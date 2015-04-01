@@ -1,0 +1,50 @@
+<gantt>
+   <days>
+      <day id="1" weekday="mon">
+         <start>08:30</start>
+         <breaks>
+            <break id="1">
+               <start>12:30</start>
+               <end>13:00</end>
+            </break>
+         </breaks>
+         <end>17:00</end>
+      </day>
+      <day id="2" weekday="tue" dup="1"/>
+      <day id="3" weekday="wed" dup="1"/>
+      <day id="4" weekday="thu" dup="1"/>
+      <day id="5" weekday="fri">
+         <start>08:30</start>
+         <end>14:00</end>
+      </day>
+   </days>
+
+   <project id="0" name="Program development">
+      <resources>
+         <resource id="1">
+            <name>MNJ</name>
+            <type>human</type>
+         </resource>
+         <resource id="2">
+            <name>Rack 1</name>
+            <type>equipment</type>
+         </resource>
+         <resource id="3">
+            <name>PC</name>
+            <type>equipment</type>
+         </resource>
+      </resources>
+
+      <tasks>
+         <task id="1">
+            <description>Task 1</description>
+         </task>
+         <task id="2">
+            <description>Task 1</description>
+         </task>
+         <task id="3">
+            <description>Task 1</description>
+         </task>
+      </tasks>
+   </project>
+</gantt>

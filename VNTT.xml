@@ -1,0 +1,28 @@
+<project name="Program development">
+<resources>
+<resource id="1"></resource>
+<resource id="1"></resource>
+<resource id="1"></resource>
+</resources>
+<task name="Initial test setup" duration="2">
+</task>
+
+<task name="Test1" duration="5.5">
+<dependency>Initial test setup</dependency>
+<task name="Test setup" duration="0.5">
+<dependency>Initial test setup</dependency>
+</task>
+</task>
+<task name="Test2" duration="5.5">
+<dependency>Test1</dependency>
+</task>
+<task name="Test3" duration="5.5">
+<dependency>Test2</dependency>
+</task>
+<task name="Test4" duration="5.5">
+<dependency>Test3</dependency>
+</task>
+<task name="Test5" duration="5.5">
+<dependency>Test4</dependency>
+</task>
+</project>
